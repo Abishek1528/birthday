@@ -30,6 +30,16 @@ const floatingDecorations = [
   ['💖', 'thankyou-decor thankyou-heart-1'],
   ['🎈', 'thankyou-decor thankyou-balloon-3'],
   ['🍰', 'thankyou-decor thankyou-cake-2'],
+  ['🎵', 'song-decor song-note-1'],
+  ['🎶', 'song-decor song-note-2'],
+  ['🎼', 'song-decor song-note-3'],
+  ['🎵', 'song-decor song-note-4'],
+  ['🎶', 'song-decor song-note-5'],
+  ['💖', 'song-decor song-heart-1'],
+  ['💗', 'song-decor song-heart-2'],
+  ['✨', 'song-decor song-sparkle-1'],
+  ['⭐', 'song-decor song-star-1'],
+  ['🎧', 'song-decor song-headphone-1'],
 ];
 
 const StarPage = ({ onBack }) => {
@@ -145,6 +155,30 @@ const StarPage = ({ onBack }) => {
         {screen === 'thankyou' && (
           <div className="thankyou-screen">
             <img className="last-image" src="/assets/last.png" alt="Thank you for watching and happy 19th birthday message" />
+            <div className="thankyou-next-container">
+              <button className="thankyou-next-button" onClick={() => setScreen('song')}>
+                Next <span aria-hidden="true">🎵 &#8594;</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {screen === 'song' && (
+          <div className="song-screen">
+            <div className="song-ambient-glow" aria-hidden="true" />
+            <div className="song-content-wrapper">
+              <div className="song-card-wrapper">
+                <div className="song-pulse-ring" aria-hidden="true" />
+                <div className="song-card-glow" aria-hidden="true" />
+                <div className="song-image-frame">
+                  <img
+                    className="song-qr-image"
+                    src="/assets/song.png"
+                    alt="Happy Birthday! A song for you - Scan QR Code"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </section>
