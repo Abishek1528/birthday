@@ -1,0 +1,133 @@
+.gift-choice-page {
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, var(--bg-pink) 0%, var(--bg-pink-light) 50%, var(--bg-pink) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-choice-page::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(246, 197, 200, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.gift-choice-page::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(246, 197, 200, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* decorations */
+.gchoice-decor { position: absolute; pointer-events: none; z-index: 2; }
+.gchoice-balloon { font-size: 56px; opacity: 0.9; animation: giftFloatWide 6s ease-in-out infinite; filter: drop-shadow(0 5px 8px rgba(127, 51, 65, 0.16)); }
+.balloon-a { left: 4%; top: 8%; animation-delay: -0.4s; }
+.balloon-b { right: 5%; top: 10%; font-size: 68px; animation-delay: -2s; }
+.balloon-c { left: 13%; bottom: 8%; font-size: 46px; animation-delay: -3.4s; }
+.balloon-d { right: 13%; bottom: 7%; font-size: 52px; animation-delay: -1.6s; }
+
+.gchoice-cake, .gchoice-chocolate, .gchoice-star, .gchoice-gift,
+.gchoice-party, .gchoice-candy, .gchoice-heart {
+  font-size: 30px;
+  opacity: 0.86;
+  filter: drop-shadow(0 3px 7px rgba(127, 51, 65, 0.14));
+  animation: giftDrift 5.5s ease-in-out infinite;
+}
+
+.gchoice-cake { font-size: 42px; }
+.cake-a { left: 7%; top: 34%; animation-delay: -1.1s; }
+.cake-b { right: 8%; top: 42%; animation-delay: -3.2s; }
+.cake-c { left: 27%; bottom: 5%; font-size: 34px; animation-delay: -2.3s; }
+
+.gchoice-chocolate { font-size: 28px; }
+.chocolate-a { left: 24%; top: 12%; animation-delay: -2.5s; }
+.chocolate-b { right: 23%; bottom: 13%; animation-delay: -0.7s; }
+.chocolate-c { right: 4%; top: 65%; font-size: 24px; animation-delay: -4s; }
+
+.gchoice-star { color: #F2B52B; font-size: 28px; }
+.star-a { left: 28%; top: 24%; animation-delay: -0.6s; }
+.star-b { right: 31%; top: 17%; animation-delay: -2.8s; }
+.star-c { left: 4%; bottom: 28%; animation-delay: -1.8s; }
+.star-d { right: 29%; bottom: 25%; font-size: 22px; animation-delay: -3.8s; }
+.star-e { right: 7%; top: 28%; font-size: 34px; animation-delay: -1.4s; }
+
+.gchoice-gift { font-size: 28px; }
+.gift-a { left: 17%; top: 58%; animation-delay: -3.6s; }
+.gift-b { right: 16%; top: 58%; animation-delay: -1.2s; }
+.gchoice-party { font-size: 32px; }
+.party-a { left: 3%; top: 57%; animation-delay: -2.2s; }
+.party-b { right: 3%; bottom: 31%; animation-delay: -4.1s; }
+.party-c { left: 44%; top: 9%; font-size: 26px; animation-delay: -0.9s; }
+.gchoice-candy { font-size: 27px; }
+.candy-a { left: 35%; bottom: 10%; animation-delay: -3s; }
+.candy-b { right: 35%; top: 32%; animation-delay: -1.7s; }
+.gchoice-heart { color: #E85B78; font-size: 29px; }
+.heart-a { left: 8%; top: 20%; animation-delay: -4.3s; }
+.heart-b { right: 10%; bottom: 18%; animation-delay: -2.6s; }
+
+@keyframes giftDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-5deg) scale(0.92); }
+  35% { transform: translate3d(12px, -18px, 0) rotate(5deg) scale(1.05); }
+  68% { transform: translate3d(-10px, 8px, 0) rotate(-2deg) scale(0.98); }
+}
+
+@keyframes giftFloatWide {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-22px) rotate(4deg); }
+}
+
+.choice-icon img { filter: saturate(1.05) contrast(0.98); border-radius: 12px; }
+.choice-image {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+  display: block;
+}
+
+/* make choice icons larger and more decorative */
+.choice-icon { width: 220px; height:220px; font-size:86px; }
+
+@media (max-width: 720px) { .choice-icon { width: 140px; height:140px; font-size:56px; } }
+
+/* reuse */
+@keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0); } }
+
+.choice-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 64px;
+  color: var(--dark-maroon);
+  margin-bottom: 8px;
+  text-align:center;
+}
+.gift-choice-stage { position: relative; z-index: 5; }
+.choice-sub { text-align:center; color: var(--text-color); margin-bottom: 26px; font-size:18px; }
+
+.choices-row { display:flex; gap:40px; justify-content:center; align-items:center; }
+.choice-item { background: transparent; border: none; cursor: pointer; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.choice-icon { width:180px; height:180px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:72px; background: linear-gradient(180deg,#fff 0%,#ffdfe6 100%); box-shadow: 0 20px 40px rgba(127,51,65,0.14); transform-origin:center; animation: floatChoice 4s ease-in-out infinite; }
+.choice-label { font-weight:700; color:var(--dark-maroon); font-size:18px; }
+
+@keyframes floatChoice { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+
+@media (max-width: 720px) {
+  .choices-row { gap:20px; flex-wrap:wrap; }
+  .choice-icon { width: 110px; height:110px; font-size:44px; }
+  .gchoice-balloon { font-size: 40px; }
+  .balloon-b { font-size: 50px; }
+  .gchoice-cake { font-size: 30px; }
+  .gchoice-chocolate, .gchoice-star, .gchoice-gift, .gchoice-party,
+  .gchoice-candy, .gchoice-heart { font-size: 22px; }
+}

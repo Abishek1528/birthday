@@ -1,0 +1,90 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-wrapper.fade-in {
+  opacity: 1;
+  animation: pageFadeIn 0.5s ease both;
+}
+
+.page-wrapper.fade-out {
+  opacity: 0;
+  animation: pageFadeOut 0.4s ease both;
+}
+
+/* Keep the experience at a consistent medium size across laptop scales. */
+@media (min-width: 901px) and (max-width: 1440px) {
+  .birthday-page,
+  .passcode-page,
+  .gift-choice-page {
+    min-height: 100svh;
+    padding-block: clamp(24px, 4vh, 48px);
+  }
+
+  .birthday-content {
+    max-width: min(920px, 92vw);
+    gap: clamp(28px, 4vw, 58px);
+    margin-bottom: clamp(18px, 3vh, 42px);
+  }
+
+  .birthday-message.line-1 { font-size: clamp(54px, 6.3vw, 78px); }
+  .birthday-message.line-2 { font-size: clamp(62px, 7vw, 88px); }
+  .birthday-message.line-3 { font-size: clamp(56px, 6.5vw, 80px); }
+  .photo-section { max-width: min(380px, 38vw); }
+  .photo-container { max-width: min(360px, 36vw); }
+
+  .passcode-content {
+    max-width: min(900px, 92vw);
+    gap: clamp(28px, 4vw, 54px);
+  }
+
+  .bunny-container { max-width: min(350px, 36vw); }
+  .bunny-image { max-width: min(330px, 34vw); max-height: 52svh; }
+  .passcode-section { max-width: min(360px, 38vw); }
+  .passcode-title { font-size: clamp(18px, 1.7vw, 22px); margin-bottom: clamp(16px, 2.5vh, 28px); }
+  .heart-keypad { gap: clamp(8px, 1.3vh, 14px); margin-bottom: clamp(18px, 3vh, 32px); }
+  .keypad-row { gap: clamp(10px, 1.4vw, 17px); }
+  .heart-btn { width: clamp(52px, 5.2vw, 68px); height: clamp(52px, 5.2vw, 68px); }
+  .heart-btn-text { font-size: clamp(16px, 1.6vw, 20px); }
+
+  .gift-choice-stage { transform: scale(clamp(0.86, 0.88 + (100vw - 901px) / 6000, 1)); transform-origin: center; }
+  .choice-title { font-size: clamp(46px, 5vw, 64px); }
+  .choice-icon { width: clamp(140px, 15vw, 180px); height: clamp(140px, 15vw, 180px); }
+  .choices-row { gap: clamp(18px, 3vw, 40px); }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .birthday-content { transform: scale(0.86); margin-block: -28px; }
+  .birthday-next-container { min-height: 54px; }
+  .passcode-content { transform: scale(0.86); }
+  .gift-choice-stage { transform: scale(0.82); }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}

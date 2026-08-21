@@ -1,0 +1,32 @@
+.next-button {
+  background-color: var(--dark-maroon);
+  color: var(--white);
+  border: none;
+  padding: 14px 48px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(145, 59, 75, 0.35);
+  transition: all 0.25s ease;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.next-button:hover:not(:disabled) {
+  background-color: var(--dark-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(145, 59, 75, 0.45);
+}
+
+.next-button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(145, 59, 75, 0.35);
+}
+
+.next-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
