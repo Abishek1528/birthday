@@ -1,10 +1,10 @@
 .passcode-page {
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: clamp(16px, 3vh, 40px) clamp(12px, 2vw, 20px);
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
+  gap: clamp(24px, 4vw, 60px);
   max-width: 1100px;
   width: 100%;
   position: relative;
@@ -48,13 +48,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 450px;
+  max-width: clamp(200px, 30vw, 380px);
   animation: float 4s ease-in-out infinite;
 }
 
 .bunny-image {
   width: 100%;
-  max-width: 420px;
+  max-width: clamp(180px, 28vw, 360px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 30px rgba(127, 51, 65, 0.2));
@@ -128,20 +128,20 @@
 .heart-keypad {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 36px;
+  gap: clamp(8px, 1.2vh, 14px);
+  margin-bottom: clamp(16px, 3vh, 36px);
 }
 
 .keypad-row {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: clamp(10px, 1.5vw, 18px);
 }
 
 .heart-btn {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: clamp(54px, 7vw, 72px);
+  height: clamp(54px, 7vw, 72px);
   background: none;
   border: none;
   cursor: pointer;

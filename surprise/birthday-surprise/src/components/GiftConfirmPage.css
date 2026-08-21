@@ -1,9 +1,9 @@
 .gift-confirm-page {
-  min-height: 100vh;
+  min-height: 100svh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 40px 20px;
+  padding: clamp(24px, 4vh, 40px) clamp(12px, 2vw, 20px);
   background: linear-gradient(135deg, var(--bg-pink) 0%, var(--bg-pink-light) 50%, var(--bg-pink) 100%);
   position: relative;
 }
@@ -81,7 +81,7 @@
 
 .gift-question {
   font-family: 'Dancing Script', cursive;
-  font-size: 64px;
+  font-size: clamp(36px, 5vw, 64px);
   color: var(--dark-maroon);
   margin-bottom: 18px;
 }
@@ -92,7 +92,7 @@
 }
 
 .gift-img {
-  width: min(400px, 68vw);
+  width: min(340px, 56vw);
   height: auto;
   display: inline-block;
   border-radius: 18px;

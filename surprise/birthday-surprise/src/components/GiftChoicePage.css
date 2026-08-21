@@ -1,9 +1,9 @@
 .gift-choice-page {
-  min-height: 100vh;
+  min-height: 100svh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding: 40px 20px;
+  padding: clamp(24px, 4vh, 40px) clamp(12px, 2vw, 20px);
   background: linear-gradient(135deg, var(--bg-pink) 0%, var(--bg-pink-light) 50%, var(--bg-pink) 100%);
   position: relative;
   overflow: hidden;
@@ -107,18 +107,18 @@
 
 .choice-title {
   font-family: 'Dancing Script', cursive;
-  font-size: 64px;
+  font-size: clamp(36px, 5vw, 64px);
   color: var(--dark-maroon);
   margin-bottom: 8px;
   text-align:center;
 }
 .gift-choice-stage { position: relative; z-index: 5; }
-.choice-sub { text-align:center; color: var(--text-color); margin-bottom: 26px; font-size:18px; }
+.choice-sub { text-align:center; color: var(--text-color); margin-bottom: clamp(12px, 2vh, 26px); font-size: clamp(14px, 1.5vw, 18px); }
 
-.choices-row { display:flex; gap:40px; justify-content:center; align-items:center; }
+.choices-row { display:flex; gap: clamp(18px, 4vw, 40px); justify-content:center; align-items:center; flex-wrap: wrap; }
 .choice-item { background: transparent; border: none; cursor: pointer; display:flex; flex-direction:column; align-items:center; gap:10px; }
-.choice-icon { width:180px; height:180px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:72px; background: linear-gradient(180deg,#fff 0%,#ffdfe6 100%); box-shadow: 0 20px 40px rgba(127,51,65,0.14); transform-origin:center; animation: floatChoice 4s ease-in-out infinite; }
-.choice-label { font-weight:700; color:var(--dark-maroon); font-size:18px; }
+.choice-icon { width: clamp(130px, 16vw, 180px); height: clamp(130px, 16vw, 180px); border-radius:18px; display:flex; align-items:center; justify-content:center; font-size: clamp(48px, 6vw, 72px); background: linear-gradient(180deg,#fff 0%,#ffdfe6 100%); box-shadow: 0 20px 40px rgba(127,51,65,0.14); transform-origin:center; animation: floatChoice 4s ease-in-out infinite; }
+.choice-label { font-weight:700; color:var(--dark-maroon); font-size: clamp(14px, 1.4vw, 18px); }
 
 @keyframes floatChoice { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
 

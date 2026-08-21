@@ -1,11 +1,11 @@
 .gallery-page {
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  padding: 48px 28px 56px;
+  padding: clamp(30px, 5vh, 48px) clamp(14px, 2vw, 28px) clamp(30px, 5vh, 56px);
   background: #351e38;
 }
 
@@ -136,6 +136,11 @@
     animation: none;
     opacity: 1;
   }
+}
+
+@media (max-width: 1100px) {
+  .gallery-page { padding: 30px 18px 38px; }
+  .gallery-grid { gap: 14px; }
 }
 
 @media (max-width: 720px) {
