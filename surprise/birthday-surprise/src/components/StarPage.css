@@ -1,12 +1,12 @@
 .star-page {
-  min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 24px 40px;
+  padding: clamp(40px, 7vh, 80px) clamp(14px, 2vw, 24px) clamp(20px, 4vh, 40px);
   background: #241737;
   transition: background 700ms ease;
 }
@@ -30,7 +30,7 @@
   position: relative;
   z-index: 5;
   width: min(900px, 92vw);
-  padding: 34px 30px 42px;
+  padding: clamp(18px, 3vh, 34px) clamp(16px, 2.5vw, 30px) clamp(24px, 4vh, 42px);
   text-align: center;
   border: 1px solid rgba(255, 244, 206, 0.45);
   border-radius: 30px;
@@ -123,7 +123,7 @@
 .star-video {
   display: block;
   width: 100%;
-  max-height: 58vh;
+  max-height: clamp(38vh, 52vh, 58vh);
   aspect-ratio: 16 / 9;
   object-fit: contain;
   border-radius: 13px;
@@ -263,6 +263,17 @@
 @keyframes starContentIn {
   from { opacity: 0; transform: translateY(26px) scale(0.94); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 1100px) {
+  .star-content { padding: 22px 20px 30px; }
+  .star-video-card { margin-top: 16px; }
+  .star-content h1 { font-size: clamp(38px, 6vw, 72px); }
+  .star-message { font-size: clamp(15px, 2vw, 22px); }
+  .balloon { font-size: 48px; }
+  .star-balloon-2 { font-size: 58px; }
+  .cake { font-size: 36px; }
+  .chocolate, .star, .sparkle, .gift, .party, .heart { font-size: 26px; }
 }
 
 @media (max-width: 600px) {
