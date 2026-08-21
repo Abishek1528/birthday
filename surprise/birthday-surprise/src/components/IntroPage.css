@@ -1,0 +1,534 @@
+/* ═══════════════════════════════════════════════════════════════
+   IntroPage.css  —  Realistic blue butterfly intro with wave paper
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Page Shell ─────────────────────────────────────────────── */
+.intro-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* ─── Confetti ────────────────────────────────────────────────── */
+.i-confetti {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 3px;
+  animation: confettiFall 5s linear infinite;
+}
+.i-confetti-1 { width:11px; height:11px; top:-5%; left:8%;  background:#FF7E95; animation-delay:0s;   }
+.i-confetti-2 { width:7px;  height:15px; top:-5%; left:22%; background:#C85568; animation-delay:0.7s; border-radius:2px; }
+.i-confetti-3 { width:10px; height:10px; top:-5%; left:38%; background:#7EC8E3; border-radius:50%; animation-delay:1.3s; }
+.i-confetti-4 { width:12px; height:8px;  top:-5%; left:55%; background:#FFD1D9; animation-delay:2.1s; }
+.i-confetti-5 { width:9px;  height:13px; top:-5%; left:70%; background:#0099FF; animation-delay:1.6s; border-radius:2px; }
+.i-confetti-6 { width:11px; height:11px; top:-5%; left:84%; background:#FF7E95; animation-delay:0.4s; }
+.i-confetti-7 { width:8px;  height:8px;  top:-5%; left:92%; background:#44BBFF; border-radius:50%; animation-delay:2.8s; }
+.i-confetti-8 { width:13px; height:7px;  top:-5%; left:47%; background:#913B4B; animation-delay:3.4s; border-radius:2px; }
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-10vh) rotate(0deg);   opacity:0;   }
+  8%   { opacity: 0.9; }
+  92%  { opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity:0;   }
+}
+
+/* ─── Emoji floaters ─────────────────────────────────────────── */
+.i-emoji {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  font-size: 32px;
+  animation: emojiBounce 3.5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 5px rgba(127,51,65,0.14));
+}
+.i-e1 { top:7%;  left:4%;  animation-delay:0s;   }
+.i-e2 { top:13%; right:5%; font-size:28px; animation-delay:0.8s; }
+.i-e3 { bottom:10%; left:8%; font-size:36px; animation-delay:1.3s; }
+.i-e4 { bottom:22%; right:7%; font-size:26px; animation-delay:0.5s; }
+.i-e5 { top:62%; left:3%;  font-size:30px; animation-delay:1.9s; }
+.i-e6 { top:30%; right:2%; font-size:34px; animation-delay:2.4s; }
+
+@keyframes emojiBounce {
+  0%,100% { transform:translateY(0) scale(1); }
+  50%      { transform:translateY(-12px) scale(1.09); }
+}
+
+/* ─── Background Butterflies — each flies across the viewport ── */
+
+/* Every .bg-bf wrapper is absolutely positioned and driven by its path animation */
+.bg-bf {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  will-change: transform, opacity;
+}
+
+/* Wing-flap animation wrapper inside each bg-bf */
+.bf-wing-anim {
+  width: 100%;
+  height: 100%;
+  animation: wingFlap 0.45s ease-in-out infinite alternate;
+  filter: drop-shadow(0 4px 10px rgba(0,80,200,0.35));
+}
+
+@keyframes wingFlap {
+  0%   { transform: scaleX(1)    rotateY(0deg);   }
+  100% { transform: scaleX(0.72) rotateY(12deg);  }
+}
+
+/*
+  Each butterfly takes a unique path across / around the screen.
+  They loop continuously. Paths vary in duration, direction, & arc.
+*/
+
+/* bf-path-1: top-left → top-right with gentle drift */
+.bf-path-1 {
+  animation: bfFly1 14s ease-in-out infinite;
+  animation-delay: -3.1s;
+}
+@keyframes bfFly1 {
+  0%   { transform: translate(-140px, 12vh) rotate(4deg) scale(0.88); opacity:0; }
+  8%   { opacity:1; }
+  30%  { transform: translate(22vw, 10vh) rotate(-10deg) scale(0.92); }
+  55%  { transform: translate(54vw,  8vh) rotate(3deg)  scale(0.95); }
+  80%  { transform: translate(84vw, 12vh) rotate(-5deg) scale(0.9); }
+  100% { transform: translate(122vw, 14vh) rotate(4deg) scale(0.88); opacity:0; }
+}
+
+/* bf-path-2: top-right → left with soft swoop */
+.bf-path-2 {
+  animation: bfFly2 17s ease-in-out infinite;
+  animation-delay: -1.7s;
+}
+@keyframes bfFly2 {
+  0%   { transform: translate(110vw, 10vh) rotate(-6deg) scale(0.86); opacity:0; }
+  12%  { opacity:1; }
+  35%  { transform: translate(72vw, 18vh) rotate(8deg) scale(0.94); }
+  60%  { transform: translate(42vw, 28vh) rotate(-3deg) scale(0.9); }
+  82%  { transform: translate(16vw, 22vh) rotate(6deg) scale(0.92); }
+  100% { transform: translate(-120px, 24vh) rotate(-6deg) scale(0.86); opacity:0; }
+}
+
+/* bf-path-3: left-middle → top-right with flutter */
+.bf-path-3 {
+  animation: bfFly3 20s ease-in-out infinite;
+  animation-delay: -4.2s;
+}
+@keyframes bfFly3 {
+  0%   { transform: translate(-110px, 48vh) rotate(-5deg) scale(0.9); opacity:0; }
+  10%  { opacity:1; }
+  28%  { transform: translate(18vw, 40vh) rotate(6deg) scale(0.95); }
+  52%  { transform: translate(40vw, 24vh) rotate(-9deg) scale(0.92); }
+  78%  { transform: translate(72vw, 18vh) rotate(4deg) scale(0.96); }
+  100% { transform: translate(110vw, 10vh) rotate(-2deg) scale(0.9); opacity:0; }
+}
+
+/* bf-path-4: top-right → bottom-left, wavy route */
+.bf-path-4 {
+  animation: bfFly4 16s ease-in-out infinite;
+  animation-delay: -2.9s;
+}
+@keyframes bfFly4 {
+  0%   { transform: translate(110vw, 5vh)  rotate(10deg) scale(0.87); opacity:0; }
+  12%  { opacity:1; }
+  28%  { transform: translate(78vw, 22vh) rotate(-8deg) scale(0.95); }
+  48%  { transform: translate(54vw, 30vh) rotate(6deg)  scale(0.92); }
+  68%  { transform: translate(30vw, 18vh) rotate(-5deg) scale(0.9); }
+  92%  { transform: translate(10vw, 38vh) rotate(9deg) scale(0.94); opacity:1; }
+  100% { transform: translate(-120px, 72vh) rotate(10deg) scale(0.85); opacity:0; }
+}
+
+/* bf-path-5: bottom-left → top-right with lift */
+.bf-path-5 {
+  animation: bfFly5 18s ease-in-out infinite;
+  animation-delay: -5.8s;
+}
+@keyframes bfFly5 {
+  0%   { transform: translate(-100px, 88vh) rotate(-12deg) scale(0.9); opacity:0; }
+  10%  { opacity:1; }
+  30%  { transform: translate(20vw, 72vh) rotate(4deg) scale(0.95); }
+  52%  { transform: translate(42vw, 52vh) rotate(-6deg) scale(0.9); }
+  74%  { transform: translate(66vw, 32vh) rotate(8deg) scale(0.92); }
+  100% { transform: translate(110vw, 12vh) rotate(-10deg) scale(0.88); opacity:0; }
+}
+
+/* bf-path-6: right → left mid-screen with sideways drift */
+.bf-path-6 {
+  animation: bfFly6 13s ease-in-out infinite;
+  animation-delay: -2.2s;
+}
+@keyframes bfFly6 {
+  0%   { transform: translate(110vw, 52vh) rotate(8deg) scale(0.92); opacity:0; }
+  8%   { opacity:1; }
+  34%  { transform: translate(80vw, 48vh) rotate(-5deg) scale(0.96); }
+  58%  { transform: translate(52vw, 46vh) rotate(4deg) scale(0.9); }
+  82%  { transform: translate(24vw, 50vh) rotate(-7deg) scale(0.93); }
+  100% { transform: translate(-120px, 54vh) rotate(8deg) scale(0.92); opacity:0; }
+}
+
+/* bf-path-7: left → right, lower section */
+.bf-path-7 {
+  animation: bfFly7 15s ease-in-out infinite;
+  animation-delay: -6.1s;
+}
+@keyframes bfFly7 {
+  0%   { transform: translate(-120px, 65vh) rotate(-4deg) scale(0.85); opacity:0; }
+  9%   { opacity:1; }
+  31%  { transform: translate(18vw, 74vh) rotate(7deg) scale(0.9); }
+  54%  { transform: translate(44vw, 82vh) rotate(-6deg) scale(0.92); }
+  77%  { transform: translate(74vw, 76vh) rotate(5deg) scale(0.9); }
+  100% { transform: translate(110vw, 62vh) rotate(-4deg) scale(0.86); opacity:0; }
+}
+
+/* bf-path-8: top-left → bottom-right diagonal */
+.bf-path-8 {
+  animation: bfFly8 22s ease-in-out infinite;
+  animation-delay: -3.7s;
+}
+@keyframes bfFly8 {
+  0%   { transform: translate(-100px, 2vh)  rotate(4deg)  scale(0.9); opacity:0; }
+  12%  { opacity:1; }
+  36%  { transform: translate(20vw, 18vh)  rotate(-6deg) scale(0.95); }
+  58%  { transform: translate(44vw, 34vh)  rotate(7deg)  scale(0.92); }
+  80%  { transform: translate(70vw, 56vh)  rotate(-4deg) scale(0.9); }
+  100% { transform: translate(110vw, 92vh)  rotate(4deg)  scale(0.88); opacity:0; }
+}
+
+/* bf-path-9: left-side drift rising to top-right */
+.bf-path-9 {
+  animation: bfFly9 16.5s ease-in-out infinite;
+  animation-delay: -2.0s;
+}
+@keyframes bfFly9 {
+  0%   { transform: translate(-90px, 84vh) rotate(-8deg) scale(0.95); opacity:0; }
+  14%  { opacity:1; }
+  34%  { transform: translate(16vw, 68vh) rotate(4deg) scale(0.92); }
+  54%  { transform: translate(32vw, 44vh) rotate(-7deg) scale(0.9); }
+  74%  { transform: translate(60vw, 28vh) rotate(10deg) scale(0.94); }
+  100% { transform: translate(120vw, 12vh) rotate(-2deg) scale(0.9); opacity:0; }
+}
+
+/* bf-path-10: right-side ripple to lower-left */
+.bf-path-10 {
+  animation: bfFly10 14.5s ease-in-out infinite;
+  animation-delay: -3.8s;
+}
+@keyframes bfFly10 {
+  0%   { transform: translate(120vw, 20vh) rotate(6deg) scale(0.88); opacity:0; }
+  10%  { opacity:1; }
+  32%  { transform: translate(82vw, 30vh) rotate(-6deg) scale(0.92); }
+  54%  { transform: translate(58vw, 44vh) rotate(5deg) scale(0.95); }
+  76%  { transform: translate(32vw, 64vh) rotate(-4deg) scale(0.9); }
+  100% { transform: translate(-130px, 90vh) rotate(8deg) scale(0.86); opacity:0; }
+}
+
+/* bf-path-11: top-left zigzag across mid-screen */
+.bf-path-11 {
+  animation: bfFly11 19s ease-in-out infinite;
+  animation-delay: -1.9s;
+}
+@keyframes bfFly11 {
+  0%   { transform: translate(-100px, 18vh) rotate(-3deg) scale(0.9); opacity:0; }
+  12%  { opacity:1; }
+  28%  { transform: translate(18vw, 22vh) rotate(8deg) scale(0.95); }
+  44%  { transform: translate(34vw, 38vh) rotate(-5deg) scale(0.92); }
+  64%  { transform: translate(56vw, 32vh) rotate(6deg) scale(0.94); }
+  84%  { transform: translate(76vw, 46vh) rotate(-8deg) scale(0.9); }
+  100% { transform: translate(112vw, 58vh) rotate(4deg) scale(0.88); opacity:0; }
+}
+
+/* bf-path-12: upper-right drift to lower-left */
+.bf-path-12 {
+  animation: bfFly12 18s ease-in-out infinite;
+  animation-delay: -4.4s;
+}
+@keyframes bfFly12 {
+  0%   { transform: translate(112vw, 10vh) rotate(6deg) scale(0.9); opacity:0; }
+  10%  { opacity:1; }
+  30%  { transform: translate(86vw, 22vh) rotate(-7deg) scale(0.95); }
+  50%  { transform: translate(62vw, 40vh) rotate(4deg) scale(0.92); }
+  70%  { transform: translate(38vw, 62vh) rotate(-6deg) scale(0.9); }
+  90%  { transform: translate(16vw, 78vh) rotate(8deg) scale(0.94); }
+  100% { transform: translate(-120px, 92vh) rotate(-2deg) scale(0.88); opacity:0; }
+}
+
+/* ─── Main scene (hero butterfly + paper) ────────────────────── */
+.main-scene {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  /* Start off-screen left */
+  transform: translateX(-130vw);
+  opacity: 0;
+}
+
+/* Fly in slowly — 5 seconds, ease into centre, then gentle hover */
+.main-scene.scene-fly-in {
+  animation:
+    heroFlyIn   8.5s cubic-bezier(0.22, 0.35, 0.35, 0.92) forwards,
+    heroHover   4.5s ease-in-out                           8.9s infinite;
+}
+
+@keyframes heroFlyIn {
+  0%   { transform: translateX(-160vw) translateY(-20px) scale(0.92); opacity: 0; }
+  12%  { opacity: 1; }
+  40%  { transform: translateX(-48vw) translateY(-28px) scale(0.95); }
+  65%  { transform: translateX(-18vw) translateY(-14px) scale(0.98); }
+  85%  { transform: translateX(4vw)   translateY(-8px)  scale(1); }
+  100% { transform: translateX(0)      translateY(0)    scale(1); opacity: 1; }
+}
+
+@keyframes heroHover {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-14px); }
+}
+
+/* ─── Hero butterfly ─────────────────────────────────────────── */
+.hero-butterfly {
+  width: 260px;
+  height: 180px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 11;
+  margin-left: -8px;
+}
+
+.hero-wing-anim {
+  width: 100%;
+  height: 100%;
+  animation: heroWingFlap 0.55s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 28px rgba(0,80,210,0.38));
+}
+
+@keyframes heroWingFlap {
+  0%   { transform: scaleX(1)    rotateY(0deg)   rotate(-2deg); }
+  100% { transform: scaleX(0.78) rotateY(14deg)  rotate(3deg);  }
+}
+
+/* ─── Thread between butterfly and paper ─────────────────────── */
+.thread {
+  width: 72px;
+  height: 4px;
+  background: linear-gradient(90deg,
+    rgba(0,80,200,0.55),
+    rgba(127,51,65,0.45)
+  );
+  border-radius: 999px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0,40,120,0.18);
+}
+.thread::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 7px; height: 7px;
+  background: #0055CC;
+  border-radius: 50%;
+}
+.thread::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 6px; height: 6px;
+  background: #A94355;
+  border-radius: 50%;
+}
+
+/* ─── Paper card ─────────────────────────────────────────────── */
+.paper-card {
+  position: relative;
+  background: linear-gradient(150deg, #fffcfb 0%, #fff6f7 42%, #ffe9ee 100%);
+  border-radius: 38px 58px 48px 62px / 36px 48px 54px 42px;
+  padding: 42px 48px 38px;
+  max-width: 520px;
+  width: min(92vw, 520px);
+  min-height: 270px;
+  border: 2px solid rgba(255,160,180,0.38);
+  box-shadow:
+    0 18px 60px rgba(127,51,65,0.18),
+    0 6px 24px rgba(127,51,65,0.09),
+    inset 0 1px 0 rgba(255,255,255,0.95);
+  z-index: 10;
+  overflow: hidden;
+  background-image:
+    linear-gradient(150deg, #fffcfb 0%, #fff6f7 42%, #ffe9ee 100%),
+    repeating-linear-gradient(
+      transparent, transparent 24px,
+      rgba(200,130,150,0.08) 24px,
+      rgba(200,130,150,0.08) 26px
+    );
+  background-blend-mode: normal;
+  /* Start invisible — wave-in when scene activates */
+  opacity: 0;
+}
+
+/* Paper horizontal waving entrance — triggered when sceneActive */
+.paper-card.paper-wave {
+  animation: paperWaveIn 4.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+}
+
+@keyframes paperWaveIn {
+  0%   { opacity:0; transform: translateX(60px) rotate(12deg); }
+  15%  { opacity:1; transform: translateX(-14px) rotate(-6deg); }
+  30%  { transform: translateX(10px) rotate(4deg);  }
+  45%  { transform: translateX(-7px) rotate(-3deg); }
+  60%  { transform: translateX(4px)  rotate(1.5deg); }
+  75%  { transform: translateX(-2px) rotate(-0.5deg); }
+  100% { opacity:1; transform: translateX(0) rotate(0deg); }
+}
+
+/* Corner fold */
+.fold-corner {
+  position: absolute;
+  top: 0; right: 0;
+  width: 32px; height: 32px;
+  background: linear-gradient(225deg, #ffd0d9 45%, rgba(255,220,228,0.2) 55%);
+  border-radius: 0 18px 0 16px;
+  box-shadow: -2px 2px 5px rgba(127,51,65,0.08);
+}
+
+/* Stamp */
+.paper-stamp {
+  position: absolute;
+  top: -17px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  filter: drop-shadow(0 3px 8px rgba(127,51,65,0.2));
+}
+
+/* ─── Paper text ─────────────────────────────────────────────── */
+.paper-inner { text-align: center; }
+
+.paper-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--dark-maroon);
+  line-height: 1.35;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 3px rgba(127,51,65,0.1);
+}
+
+.paper-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark-pink);
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.paper-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+@keyframes fadeinup {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.ibtn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 12px 34px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.yes-btn {
+  background: linear-gradient(135deg, #FF7E95, #C85568);
+  color: white;
+  box-shadow: 0 6px 22px rgba(200,85,104,0.42);
+}
+.yes-btn:hover  { transform: translateY(-3px) scale(1.06); box-shadow: 0 12px 30px rgba(200,85,104,0.52); }
+.yes-btn:active { transform: scale(0.96); }
+
+.no-btn {
+  background: rgba(255,255,255,0.75);
+  color: var(--dark-maroon);
+  border: 2px solid rgba(200,85,104,0.32);
+  backdrop-filter: blur(4px);
+}
+.no-btn:hover { background: rgba(255,200,210,0.55); transform: translateY(-2px); }
+
+/* Punch animation on No */
+.no-btn.punched {
+  animation: punchShake 0.65s ease-in-out;
+}
+
+@keyframes punchShake {
+  0%   { transform: translateX(0) rotate(0deg) scale(1); }
+  8%   { transform: translateX(-18px) rotate(-8deg) scale(0.88); }
+  18%  { transform: translateX(16px)  rotate(7deg)  scale(1.07); }
+  28%  { transform: translateX(-13px) rotate(-5deg) scale(0.93); }
+  40%  { transform: translateX(10px)  rotate(4deg); }
+  52%  { transform: translateX(-7px)  rotate(-2deg); }
+  65%  { transform: translateX(4px)   rotate(1deg); }
+  80%  { transform: translateX(-2px)  rotate(-0.5deg); }
+  100% { transform: translateX(0) rotate(0deg) scale(1); }
+}
+
+/* Punch text */
+.punch-msg {
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--dark-maroon);
+  margin-top: 16px;
+  padding: 8px 14px;
+  background: rgba(255,180,190,0.3);
+  border-radius: 12px;
+  animation: fadeinup 0.4s ease forwards;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 750px) {
+  .main-scene {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-butterfly { width:170px; height:120px; margin-right:0; margin-bottom:-14px; }
+  .thread { display:none; }
+  .paper-card { padding:26px 22px 22px; max-width:300px; }
+  .paper-text { font-size:24px; }
+  .paper-sub  { font-size:17px; }
+  .ibtn { padding:10px 24px; font-size:15px; }
+
+  /* Simpler wave on mobile */
+  @keyframes paperWaveIn {
+    0%   { opacity:0; transform: translateY(30px) rotate(5deg); }
+    40%  { opacity:1; transform: translateY(-8px) rotate(-2deg); }
+    70%  { transform: translateY(4px) rotate(1deg); }
+    100% { opacity:1; transform: translateY(0) rotate(0); }
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-butterfly { width:130px; height:90px; }
+  .paper-text { font-size:20px; }
+  .paper-card { padding:20px 14px 18px; }
+}
